@@ -10,6 +10,7 @@ void delete_begin();
 void delete_end();
 void delete_pos();
 void count();
+void reverse();
  
  
 struct node
@@ -33,9 +34,10 @@ int main()
                 printf("\n 7.Delete from the end        \n");
                 printf("\n 8.Delete from specified position     \n");
                 printf("\n 9.To see the number of elements inside the Linked list     \n");
-                printf("\n 10.Exit       \n");
+                printf("\n 10.Reverse the linked list     \n");
+                printf("\n 11.Exit       \n");
                 printf("\n--------------------------------------\n");
-                printf("\nEnter your choice:t\n");
+                printf("\nEnter your choice:\n");
                 scanf("%d",&choice);
                 switch(choice)
                 {
@@ -65,9 +67,12 @@ int main()
                                         break;
                         case 9:
                                         count();
-                                        break;                
-                        
+                                        break; 
                         case 10:
+                                        reverse();
+                                        break;               
+                        
+                        case 11:
                                         printf("This piece of program was written by\n");
                                         printf("Name : Aditya Kumar\n");
                                         printf("Roll number : 1901230100001\n");
@@ -96,7 +101,7 @@ void create()
                 printf("nOut of Memory Space:\n");
                 exit(0);
         }
-        printf("\nEnter the data value for the node:t\n");
+        printf("\nEnter the data value for the node:\n");
         scanf("%d",&temp->info);
         temp->next=NULL;
         if(start==NULL)
@@ -133,6 +138,21 @@ void display()
         }
 }
 
+void reverse()
+{
+        struct node * prevnode, * currentnode, * nextnode;
+        prevnode=NULL;
+        currentnode = nextnode = start;
+        while(nextnode != NULL)
+        {
+                nextnode = nextnode->next; //updating next node pointer to point to the next node
+                currentnode->next = prevnode;
+                prevnode = currentnode;
+                currentnode = nextnode;
+        }
+        start = prevnode;
+}
+
 void count()
 {
         struct node * ptr;
@@ -164,7 +184,7 @@ void insert_begin()
                 printf("\nOut of Memory Space:\n");
                 return;
         }
-        printf("\nEnter the data value for the node:t\n" );
+        printf("\nEnter the data value for the node:\n" );
         scanf("%d",&temp->info);
         temp->next =NULL;
         if(start==NULL)
@@ -186,7 +206,7 @@ void insert_end()
                 printf("\nOut of Memory Space:\n");
                 return;
         }
-        printf("\nEnter the data value for the node:t\n" );
+        printf("\nEnter the data value for the node:\n" );
         scanf("%d",&temp->info );
         temp->next =NULL;
         if(start==NULL)
@@ -213,9 +233,9 @@ void insert_pos()
                 printf("\nOut of Memory Space:\n");
                 return;
         }
-        printf("\nEnter the position for the new node to be inserted:t\n");
+        printf("\nEnter the position for the new node to be inserted:\n");
         scanf("%d",&pos);
-        printf("\nEnter the data value of the node:t\n");
+        printf("\nEnter the data value of the node:\n");
         scanf("%d",&temp->info) ;
   
         temp->next=NULL;
@@ -242,7 +262,7 @@ void insert_pos()
 void delete_begin()
 {
         struct node *ptr;
-        if(ptr==NULL)
+        if(start==NULL)
         {
                 printf("\nList is Empty:\n");
                 return;
@@ -251,7 +271,7 @@ void delete_begin()
         {
                 ptr=start;
                 start=start->next ;
-                printf("\nThe deleted element is :%dt\n",ptr->info);
+                printf("\nThe deleted element is :%d\n",ptr->info);
                 free(ptr);
         }
 }
@@ -267,7 +287,7 @@ void delete_end()
         {
                 ptr=start;
                 start=NULL;
-                printf("\nThe deleted element is:%dt\n",ptr->info);
+                printf("\nThe deleted element is:%d\n",ptr->info);
                 free(ptr);
         }
         else
@@ -279,7 +299,7 @@ void delete_end()
                         ptr=ptr->next;
                 }
                 temp->next=NULL;
-                printf("\nThe deleted element is:%dt\n",ptr->info);
+                printf("\nThe deleted element is:%d\n",ptr->info);
                 free(ptr);
         }
 }
@@ -294,13 +314,13 @@ void delete_pos()
         }
         else
         {
-                printf("\nEnter the position of the node to be deleted:t\n");
+                printf("\nEnter the position of the node to be deleted:\n");
                 scanf("%d",&pos);
                 if(pos==0)
                 {
                         ptr=start;
                         start=start->next ;
-                        printf("\nThe deleted element is:%dt\n",ptr->info  );
+                        printf("\nThe deleted element is:%d\n",ptr->info  );
                         free(ptr);
                 }
                 else
@@ -314,7 +334,7 @@ void delete_pos()
                                 }
                         }
                         temp->next =ptr->next ;
-                        printf("\nThe deleted element is:%dt\n",ptr->info );
+                        printf("\nThe deleted element is:%d\n",ptr->info );
                         free(ptr);
                 }
         }
