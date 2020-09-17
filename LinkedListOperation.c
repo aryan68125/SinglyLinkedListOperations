@@ -63,11 +63,20 @@ int main()
                                         break;
                         
                         case 9:
+                                        printf("This piece of program was written by\n");
+                                        printf("Name : Aditya Kumar\n");
+                                        printf("Roll number : 1901230100001\n");
+                                        printf("College code: 123\n");
+                                        printf("College Name : SITM\n");
+                                        printf("Course: B.Tech\n");
+                                        printf("Branch : Computer science\n");
+                                        printf("Year : 2nd Year\n");
+                                        printf("Thank you for using my program ....Bye\n");
                                         exit(0);
                                         break;
                              
                         default:
-                                        printf("n Wrong Choice:n");
+                                        printf("\n Wrong Choice:\n");
                                         break;
                 }
         }
