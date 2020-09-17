@@ -9,6 +9,7 @@ void insert_pos();
 void delete_begin();
 void delete_end();
 void delete_pos();
+void count();
  
  
 struct node
@@ -31,7 +32,8 @@ int main()
                 printf("\n 6.Delete from beginning      \n");
                 printf("\n 7.Delete from the end        \n");
                 printf("\n 8.Delete from specified position     \n");
-                printf("\n 9.Exit       \n");
+                printf("\n 9.To see the number of elements inside the Linked list     \n");
+                printf("\n 10.Exit       \n");
                 printf("\n--------------------------------------\n");
                 printf("\nEnter your choice:t\n");
                 scanf("%d",&choice);
@@ -61,8 +63,11 @@ int main()
                         case 8:
                                         delete_pos();
                                         break;
-                        
                         case 9:
+                                        count();
+                                        break;                
+                        
+                        case 10:
                                         printf("This piece of program was written by\n");
                                         printf("Name : Aditya Kumar\n");
                                         printf("Roll number : 1901230100001\n");
@@ -127,6 +132,29 @@ void display()
                 }
         }
 }
+
+void count()
+{
+        struct node * ptr;
+       ptr = start;
+       int count = 0;
+       if(start==NULL)
+       {
+        printf("\nList is Empty\n");
+        return;
+       }
+       else
+       {
+       while(ptr!=NULL)
+       {
+        count++;
+        ptr = ptr->next;
+       }
+       printf("Number of elements in the linkd list is = %d", count);
+}
+
+}
+
 void insert_begin()
 {
         struct node *temp;
@@ -198,7 +226,9 @@ void insert_pos()
         }
         else
         {
-                for(i=0,ptr=start;i<pos-1;i++) { ptr=ptr->next;
+                for(i=0,ptr=start;i<pos-1;i++) 
+                { 
+                        ptr=ptr->next;
                         if(ptr==NULL)
                         {
                                 printf("\nPosition not found:[Handle with care]\n");
